@@ -12,18 +12,17 @@
     </form>
 
     <ul>
-        {% for i, task in enumerate(tasks) %}
-            <li>
-                {% if task.done %}
-                    <s>{{ task.task }}</s>
-                {% else %}
-                    {{ task.task }}
-                    <a href="/done/{{ i }}">✔️ Done</a>
-                {% endif %}
-                <a href="/delete/{{ i }}">❌ Delete</a>
-            </li>
+        {% for task in tasks %}
+        <li>
+            {% if task.done %}
+                <s>{{ task.task }}</s>
+            {% else %}
+                {{ task.task }}
+                <a href="/done/{{ loop.index0 }}">✔️ Done</a>
+            {% endif %}
+            <a href="/delete/{{ loop.index0 }}">❌ Delete</a>
+        </li>
         {% endfor %}
     </ul>
 </body>
 </html>
-
